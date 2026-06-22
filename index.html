@@ -510,6 +510,125 @@ section {
   border-color: var(--gold);
 }
 
+/* ====== FAQ ====== */
+.faq-list {
+  max-width: 680px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(232,192,64,0.08);
+  transition: border-color 0.3s;
+}
+
+.faq-list > .faq-item:first-child {
+  border-top: 1px solid rgba(232,192,64,0.08);
+}
+
+.faq-item:hover { border-color: rgba(232,192,64,0.2); }
+
+.faq-q {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 1.3rem 0.25rem;
+  color: var(--text-bright);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.faq-q:focus-visible {
+  outline: 1px solid var(--gold-dim);
+  outline-offset: 4px;
+}
+
+/* Illuminated versal Q — rotates through the manuscript pigments */
+.faq-versal {
+  flex: none;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 1.4em;
+}
+.faq-item:nth-of-type(4n+1) .faq-versal { color: var(--vermillion); }
+.faq-item:nth-of-type(4n+2) .faq-versal { color: var(--lapis); }
+.faq-item:nth-of-type(4n+3) .faq-versal { color: var(--malachite); }
+.faq-item:nth-of-type(4n+4) .faq-versal { color: var(--gold); }
+
+/* Toggle knot — echoes the section-rule knot, fills when open */
+.faq-knot {
+  flex: none;
+  margin-left: auto;
+  align-self: center;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--gold-dim);
+  transform: rotate(45deg);
+  transition: transform 0.4s, background 0.4s, border-color 0.4s;
+}
+
+.faq-item.open .faq-knot {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: rotate(225deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease;
+}
+
+.faq-a-inner {
+  padding: 0 2.5rem 1.5rem 3rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.faq-a-inner p { margin-bottom: 0.8em; }
+.faq-a-inner p:last-child { margin-bottom: 0; }
+
+/* Not-So-FAQs subheading */
+.faq-subhead {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  text-align: center;
+  margin: 3.5rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.faq-subhead::before,
+.faq-subhead::after {
+  content: '';
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+
+@media (max-width: 700px) {
+  .faq-q { font-size: 1.1rem; gap: 0.8rem; }
+  .faq-a-inner { padding: 0 1rem 1.4rem 2.6rem; font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a, .faq-knot { transition: none; }
+}
+
 /* ====== FOOTER ====== */
 footer {
   text-align: center;
@@ -573,6 +692,7 @@ footer p {
   <a href="#music">Music</a>
   <a href="#shows">Shows</a>
   <a href="#contact">Contact</a>
+  <a href="#faq">FAQ</a>
 </nav>
 
 <!-- HERO -->
@@ -780,6 +900,155 @@ footer p {
   </div>
 </section>
 
+<!-- ARCH → FAQ -->
+<div class="arch-divider">
+  <svg viewBox="0 0 900 120" preserveAspectRatio="none">
+    <path d="M0 120 L0 60 Q450 -40, 900 60 L900 120Z" fill="var(--bg)" stroke="none"/>
+    <path d="M0 60 Q450 -40, 900 60" fill="none" stroke="#E8432E" stroke-width="0.8" opacity="0.2"/>
+    <path d="M20 62 Q450 -30, 880 62" fill="none" stroke="#E8432E" stroke-width="0.4" opacity="0.1"/>
+  </svg>
+</div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal">
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <div class="section-rule">
+      <div class="line"></div>
+      <div class="knot"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <ul class="faq-list">
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>What does &ldquo;Colibr&iacute;&rdquo; mean?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Colibr&iacute; means &ldquo;hummingbird&rdquo; in various languages, including Italian and Spanish.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>What is a gondolier?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>A gondolier is someone who rows a traditional Venetian boat called a gondola.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Wait, there are gondolas here in North Texas?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes, there are several authentic Venetian vessels here.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Can we book a ride in a gondola with you?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. Please feel free to contact me directly if you would like to book a ride with me.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Who else plays with you?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>I usually play along with backing tracks that I record myself. It sounds like a full band, but it&rsquo;s just me. I do bring extra instruments just in case the audience wants to join in, however!</p>
+      </div></div>
+    </li>
+  </ul>
+
+  <h3 class="faq-subhead reveal">Not-So-FAQs</h3>
+
+  <ul class="faq-list">
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Where are you from?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>I was born here in North America, but I have heritage from around the world, including South America and Europe.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>What languages do you speak?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>I speak six languages either fluently or conversationally and a smattering of others. In no particular order, my strongest languages are English, Spanish, French, Portuguese, Italian, and Esperanto.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>What is Esperanto?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>It is a language created by the linguist L.&thinsp;L. Zamenhof. It is easy to learn and fun to speak. I learned the basics of Esperanto on Duolingo.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Most of those are Romance languages.</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Good observation. That&rsquo;s because I grew up speaking Spanish as well as English.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Do you use AI in your music?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>No, I consciously refrain from using AI whatsoever in <em>any</em> part of the music-making process. This means I don&rsquo;t use it to write lyrics, melodies, chord progressions, or anything else. I make music with my hands and my mind.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>How do you record your music?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>I record my music into an audio interface called a Scarlett by the company Focusrite. My preferred DAW (Digital Audio Workstation) is Reaper.</p>
+      </div></div>
+    </li>
+    <li class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-versal" aria-hidden="true">Q</span>
+        <span>Do you give lessons?</span>
+        <span class="faq-knot" aria-hidden="true"></span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>I am not currently available for private lessons, but I plan to post some instructional videos available for free on YouTube.</p>
+      </div></div>
+    </li>
+  </ul>
+</section>
+
 <footer>
   <p>&copy; 2026 Colibr&iacute; &middot; All Rights Reserved</p>
 </footer>
@@ -791,6 +1060,29 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn = item.querySelector('.faq-q');
+  const panel = item.querySelector('.faq-a');
+  btn.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    if (isOpen) {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      requestAnimationFrame(() => { panel.style.maxHeight = '0'; });
+      item.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      panel.addEventListener('transitionend', function te() {
+        if (item.classList.contains('open')) panel.style.maxHeight = 'none';
+        panel.removeEventListener('transitionend', te);
+      });
+    }
+  });
+});
 </script>
 
 </body>
